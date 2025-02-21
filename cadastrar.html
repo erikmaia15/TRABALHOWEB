@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Cadastrar</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="matricula">Matrícula</label>
+          <input type="text" id="matricula" name="matricula" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirme a Senha:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+        </div>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+    </div>
+    <script>
+      // Função para obter usuários do localStorage
+      function getUsers() {
+        return JSON.parse(localStorage.getItem("users")) || [];
+      }
+
+      // Função para salvar usuários no localStorage
+      function saveUsers(users) {
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+
+      // Função para limpar os campos do formulário
+      function limparCampos() {
+        document.getElementById("matricula").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("confirmPassword").value = "";
+      }
+
+      // Captura o formulário de cadastro
+      const form = document.getElementById("registerForm");
+
+      // Adiciona o evento de submit ao formulário
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede o envio do formulário
+
+        // Captura os valores dos campos
+        const matricula = document.getElementById("matricula").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        // Valida se as senhas coincidem
+        if (password !== confirmPassword) {
+          alert("As senhas não coincidem!");
+          limparCampos(); // Limpa os campos
+          return;
+        }
+
+        // Obtém a lista de usuários
+        const users = getUsers();
+
+        // Verifica se o usuário já está cadastrado
+        const usuarioExistente = users.some(
+          (user) => user.matricula === matricula
+        );
+
+        if (usuarioExistente) {
+          alert("Usuário já cadastrado!");
+          limparCampos(); // Limpa os campos
+        } else {
+          // Cria o usuário e adiciona ao array
+          const newUser = { matricula, email, password };
+          users.push(newUser);
+          saveUsers(users); // Salva no localStorage
+          alert("Usuário cadastrado com sucesso!");
+          limparCampos(); // Limpa os campos
+          window.location.href = "login.html"; // Redireciona para a página de login
+        }
+      });
+    </script>
+  </body>
+</html>
