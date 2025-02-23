@@ -14,14 +14,6 @@ header{
     align-items: center;
     gap: 30px;
 }
-footer{
-    height: 50px;
-    background-color: #ECF39E;
-    color: #3C6028;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 h2, h3{
     color: #3C6028;
 }
