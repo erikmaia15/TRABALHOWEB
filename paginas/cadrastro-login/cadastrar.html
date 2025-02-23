@@ -115,7 +115,7 @@
       <h2>Cadastrar</h2>
       <form id="registerForm">
         <div class="form-group">
-          <label for="matricula">Matrícula</label>
+          <label for="matricula">Matrícula/Siape</label>
           <input type="text" id="matricula" name="matricula" required />
         </div>
         <div class="form-group">
@@ -144,6 +144,30 @@
       <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
     </div>
     <script>
+      // Lista de SIAPEs permitidos (admins)
+      const allowedSiapes = [
+        "123456-7",
+        "234567-8",
+        "345678-9",
+        "456789-0",
+        "567890-1",
+        "678901-2",
+        "789012-3",
+        "890123-4",
+        "901234-5",
+        "012345-6",
+        "112233-4",
+        "223344-5",
+        "334455-6",
+        "445566-7",
+        "556677-8",
+        "667788-9",
+        "778899-0",
+        "889900-1",
+        "990011-2",
+        "001122-3",
+      ];
+
       // Função para obter usuários do localStorage
       function getUsers() {
         return JSON.parse(localStorage.getItem("users")) || [];
@@ -163,6 +187,12 @@
         document.getElementById("confirmPassword").value = "";
       }
 
+      // Função para verificar se a matrícula é um SIAPE válido
+      function isSiapeValid(matricula) {
+        const siapePattern = /^\d{6}-\d$/;
+        return siapePattern.test(matricula);
+      }
+
       // Captura o formulário de cadastro
       const form = document.getElementById("registerForm");
 
@@ -172,7 +202,7 @@
 
         // Captura os valores dos campos
         const matricula = document.getElementById("matricula").value;
-        const primeiroNome = document.getElementById("nome-user").value; // Corrigido para salvar o nome
+        const primeiroNome = document.getElementById("nome-user").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         const confirmPassword =
@@ -181,6 +211,19 @@
         // Valida se as senhas coincidem
         if (password !== confirmPassword) {
           alert("As senhas não coincidem!");
+          limparCampos(); // Limpa os campos
+          return;
+        }
+
+        // Verifica se o SIAPE é válido e está na lista de permitidos
+        if (!isSiapeValid(matricula)) {
+          alert("Formato de SIAPE inválido!");
+          limparCampos(); // Limpa os campos
+          return;
+        }
+
+        if (!allowedSiapes.includes(matricula)) {
+          alert("SIAPE não permitido para cadastro!");
           limparCampos(); // Limpa os campos
           return;
         }
@@ -198,7 +241,13 @@
           limparCampos(); // Limpa os campos
         } else {
           // Cria o usuário e adiciona ao array
-          const newUser = { matricula, primeiroNome, email, password }; // Adicionado primeiroNome
+          const newUser = {
+            matricula,
+            primeiroNome,
+            email,
+            password,
+            isAdmin: true, // Todos os SIAPEs da lista são admins
+          };
           users.push(newUser);
           saveUsers(users); // Salva no localStorage
           alert("Usuário cadastrado com sucesso!");
