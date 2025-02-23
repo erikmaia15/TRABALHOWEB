@@ -35,7 +35,7 @@ h2, h3{
 }
 .form{
     background-color: #ECF39E;
-    width: 70%;
+    width: 1000px;
     border-radius: 10px;
     padding: 50px;
 }
@@ -101,27 +101,4 @@ button{
 }
 button:hover{
     background-color: #3C6028;
-}
-
-@media (max-width: 1080px){
-    header{
-        font-size: 10px;
-    }
-    .group{
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .radio-group{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .radio-group label{
-        display: flex;
-        align-items: center;
-    }
-    #declaracao{
-        white-space: normal;
-    }
 }
