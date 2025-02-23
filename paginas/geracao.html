@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pró-Reitoria de Assistência Estudantil - UFC</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e5f4b8;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        padding: 20px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      header {
+        background-color: #d9eb92;
+        text-align: center;
+        padding: 20px 0;
+        color: #4a7638;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .filters,
+      .reports {
+        background-color: #99b86c;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        color: white;
+      }
+
+      .filters h2,
+      .reports h2 {
+        margin-top: 0;
+      }
+
+      .filters label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .filters select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .filters input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .filters button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4a7638;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .filters button:hover {
+        background-color: #3a5c2a;
+      }
+
+      .reports table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #e5f4b8;
+        color: #333;
+      }
+
+      .reports th,
+      .reports td {
+        border: 1px solid #99b86c;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .reports th {
+        background-color: #c3d6a8;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Pró-Reitoria de Assistência Estudantil</h1>
+    </header>
+
+    <div class="container">
+      <div class="filters">
+        <h2>Filtros:</h2>
+        <label>
+          <input type="checkbox" checked />
+          Status da Solicitação:
+          <select>
+            <option>Todas</option>
+          </select>
+        </label>
+
+        <label>
+          <input type="checkbox" checked />
+          Curso:
+          <select>
+            <option>Todos</option>
+          </select>
+        </label>
+
+        <label>
+          <input type="checkbox" checked />
+          Faixa de Renda:
+          <select>
+            <option>Todas</option>
+          </select>
+        </label>
+
+        <button>Gerar Relatórios</button>
+      </div>
+
+      <div class="reports">
+        <h2>Relatórios:</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome:</th>
+              <th>Curso</th>
+              <th>Renda</th>
+              <th>Status</th>
+              <th>Meses a Receber</th>
+              <th>Histórico (Últimos 6 anos)</th>
+              <th>Datas de Concessão</th>
+              <th>Pendências</th>
+              <th>Justificativa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dados da tabela serão preenchidos aqui -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
