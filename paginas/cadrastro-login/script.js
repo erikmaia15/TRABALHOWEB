@@ -2,6 +2,7 @@ document
   .getElementById("btn-cadastrar")
   .addEventListener("submit", function () {
     const matricula_user = document.getElementById("matricula").value;
+    const nomeUser = document.getElementById("nome-user").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
@@ -20,6 +21,7 @@ document
 function criarUser() {
   const users = {
     matricula: matricula_user,
+    primeiroNome: nomeUser,
     email: email,
     senha: password,
   };

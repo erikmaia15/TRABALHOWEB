@@ -1,0 +1,15 @@
+header nav {
+  background-color: #ecf39e;
+  color: white;
+  padding: 10px 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #395c35;
+  margin-bottom: 20px;
+}
