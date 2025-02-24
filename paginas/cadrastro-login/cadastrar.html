@@ -214,7 +214,6 @@
           limparCampos(); // Limpa os campos
           return;
         }
-
         // Verifica se o SIAPE é válido e está na lista de permitidos
 
         // Obtém a lista de usuários
@@ -235,7 +234,7 @@
             primeiroNome,
             email,
             password,
-            isAdmin: true, // Todos os SIAPEs da lista são admins
+            isAdmin: isSiapeValid(matricula), // Todos os SIAPEs da lista são admins
           };
           users.push(newUser);
           saveUsers(users); // Salva no localStorage
