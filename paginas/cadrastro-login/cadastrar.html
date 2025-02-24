@@ -216,17 +216,6 @@
         }
 
         // Verifica se o SIAPE é válido e está na lista de permitidos
-        if (!isSiapeValid(matricula)) {
-          alert("Formato de SIAPE inválido!");
-          limparCampos(); // Limpa os campos
-          return;
-        }
-
-        if (!allowedSiapes.includes(matricula)) {
-          alert("SIAPE não permitido para cadastro!");
-          limparCampos(); // Limpa os campos
-          return;
-        }
 
         // Obtém a lista de usuários
         const users = getUsers();
