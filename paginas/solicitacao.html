@@ -204,7 +204,7 @@
                     <h3>Declaração:</h3>
 
                     <div class="radio-group">
-                        <label><input type="radio" class="radio" name="declaracao" value="declaracao">Declaro, sob as penalidades da lei, que as informações prestadas acima são verdadeiras.</label>
+                        <label id="declaracao"><input type="radio" class="radio" name="declaracao" value="declaracao">Declaro, sob as penalidades da lei, que as informações prestadas acima são verdadeiras.</label>
                     </div>
                 </section>
                 <button type="submit"  id = "solicitacao"> Enviar Solicitação</button>
@@ -212,9 +212,6 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Pró-Reitoria de Assistência Estudantil</p>
-    </footer>
     <script>
         document.getElementById("solicitacaoForm").addEventListener('submit', function(event){
             event.preventDefault()
